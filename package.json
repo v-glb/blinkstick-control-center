@@ -45,6 +45,8 @@
     }
   },
   "dependencies": {
+    "a-color-picker": "^1.2.1",
+    "blinkstick": "^1.2.0",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
