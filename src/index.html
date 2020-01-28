@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-  <title>Starter Template - Materialize</title>
+  <title>Control Center</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,24 +13,15 @@
 </head>
 
 <body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-    </div>
-  </nav>
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center orange-text">Starter Template</h1>
+      <h3 class="header center" id="device-info-h">Connected: </h3>
       <div class="row center">
-        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+
+        <h5 class="header col s12 light" id="device-serial-h">Serial: </h5>
+        <h5 class="header col s12 light" id="device-manufact-h">Manufacturer: </h5>
       </div>
-      <div class="row center">
-        <a class="btn-large waves-effect waves-light orange color-change">Change Color!</a>
-      </div>
-      <br><br>
 
     </div>
   </div>
@@ -43,6 +34,9 @@
       <div class="row center">
 
         <div class="col s12 picker" acp-color="#EFE9E7" acp-show-hsl="no" acp-palette="PALETTE_MATERIAL_CHROME">
+          <div class="row center">
+            <a class="btn-large waves-effect waves-light color-change black-text transparent">Change Color!</a>
+          </div>
 
         </div>
 
@@ -52,7 +46,7 @@
     <br><br>
   </div>
 
-  <footer class="page-footer orange">
+  <footer class="page-footer grey">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
@@ -64,22 +58,6 @@
 
         </div>
         <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
         </div>
       </div>
     </div>
