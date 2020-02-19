@@ -12,20 +12,43 @@
   <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 
+<!-- Nav bar -->
+<nav>
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo left" id="nav-device-title"></a>
+    <ul class="right">
+      <li><a href="#"><i class="material-icons">settings</i></a></li>
+      <li><a href="#" id="close-btn"><i class="material-icons">close</i></a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main body -->
+
 <body>
   <div class="section no-pad-bot" id="index-banner">
+
     <div class="container">
-      <br><br>
-      <h3 class="header center" id="device-info-h">Connected: </h3>
+
       <div class="row center">
 
         <h5 class="header col s12 light" id="device-serial-h">Serial: </h5>
         <h5 class="header col s12 light" id="device-manufact-h">Manufacturer: </h5>
+
+        <!-- Currently monitoring information -->
+        <h5 class="header col s12 light" id="current-monitor">
+          <!-- Fill with monitor functions from app.js -->
+        </h5>
+        <h5 class="header col s12 light" id="current-monitor-use">&#8709; Usage: %</h5>
+
+        <a class="waves-effect waves-light btn-small" id="toggle-monitor">Toggle Monitoring</a>
+
       </div>
 
     </div>
   </div>
 
+  <hr>
 
   <div class="container">
     <div class="section">
@@ -35,7 +58,7 @@
 
         <div class="col s12 picker" acp-color="#EFE9E7" acp-show-hsl="no" acp-palette="PALETTE_MATERIAL_CHROME">
           <div class="row center">
-            <a class="btn-large waves-effect waves-light color-change black-text transparent">Change Color!</a>
+
           </div>
 
         </div>
@@ -51,11 +74,6 @@
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our
-            full time job. Any amount would help support and continue development on this project and is greatly
-            appreciated.</p>
-
-
         </div>
         <div class="col l3 s12">
         </div>
