@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Tray, nativeImage, Menu, ipcMain, screen } = require('electron');
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -9,14 +9,26 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+let tray;
 
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
+    width: 350,
     height: 600,
+    frame: false,
+    // resizable: false,
+    show: false,
     webPreferences: {
       nodeIntegration: true
+    }
+  });
+
+
+  // Hide the window when it loses focus
+  mainWindow.on('blur', () => {
+    if (!mainWindow.webContents.isDevToolsOpened()) {
+      mainWindow.hide();
     }
   });
 
@@ -32,6 +44,24 @@ const createWindow = () => {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
+  });
+
+  // Init system tray
+  tray = new Tray(path.join(__dirname, 'assets/icon.png'));
+
+  const contextMenu = Menu.buildFromTemplate([
+    { label: 'Control Center', click: () => toggleWindow(mainWindow) },
+    { label: 'Monitor CPU', type: 'radio', enabled: true, click: () => mainWindow.webContents.send('monitor:cpu') },
+    { label: 'Monitor RAM', type: 'radio', enabled: true, click: () => mainWindow.webContents.send('monitor:ram') },
+    { label: 'Quit', click: () => app.quit() }
+  ]);
+
+  tray.setToolTip('BlinkStick Control Center');
+  tray.setContextMenu(contextMenu);
+
+  // Make app window only visible on tray icon click
+  tray.on('click', (event, bounds) => {
+    toggleWindow(mainWindow);
   });
 };
 
@@ -57,5 +87,29 @@ app.on('activate', () => {
   }
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
+ipcMain.on('app:close', (e) => {
+  app.quit();
+});
+
+// Functions for positioning the app properly near tray icon
+function toggleWindow(window) {
+  window.isVisible() ? window.hide() : showWindow(window);
+}
+
+function showWindow(window) {
+  // TODO: Position app window near to tray icon
+  // const position = getWindowPosition(window);
+  // window.setPosition(position.x, position.y, false);
+  window.show();
+}
+
+function getWindowPosition(window) {
+  // TODO: Position app window near to tray icon
+  //   let winBounds = window.getBounds();
+  //   let trayBounds = tray.getBounds();
+  //   // There may be more than one screen, so we need to figure out on which screen our tray icon lives.
+  //   const trayScreen = screen.getDisplayNearestPoint({
+  //     x: trayBounds.x,
+  //     y: trayBounds.y
+  //   });
+}
