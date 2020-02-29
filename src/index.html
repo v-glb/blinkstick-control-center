@@ -31,13 +31,32 @@
       <div class="row center">
 
         <h5 class="header col s12 light" id="device-serial-h">Serial: </h5>
-        <h5 class="header col s12 light" id="device-manufact-h">Manufacturer: </h5>
 
-        <!-- Currently monitoring information -->
-        <h5 class="header col s12 light" id="current-monitor">
-          <!-- Fill with monitor functions from app.js -->
-        </h5>
-        <h5 class="header col s12 light" id="current-monitor-use">&#8709; Usage: %</h5>
+        <!-- Table with stats -->
+        <table class="striped centered">
+          <thead>
+            <tr>
+              <th>Monitor</th>
+              <th>Usage</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td id="current-monitor">
+                <!-- Monitoring: CPU, RAM etc. -->
+              </td>
+              <td id="current-monitor-use">
+                <!-- Usage in % -->
+              </td>
+              <td id="blinkstick-status">
+                <!-- Normal, medium, heavy? -->
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
 
       </div>
     </div>

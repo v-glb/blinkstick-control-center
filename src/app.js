@@ -28,11 +28,6 @@ if (!led) {
   led.getSerial((err, data) => {
     document.getElementById('device-serial-h').innerHTML += data;
   });
-
-  led.getManufacturer((err, data) => {
-    document.getElementById('device-manufact-h').innerHTML += data;
-  });
-
 }
 
 /* 
@@ -78,8 +73,8 @@ function monitorMem() {
       memCrit = data.total * 0.8;
 
       const memUsage = Math.round((data.active / data.total) * 100 * 100) / 100;
-      document.getElementById('current-monitor').innerHTML = 'Monitoring: RAM';
-      document.getElementById('current-monitor-use').innerHTML = `Usage: ${memUsage}%`;
+      document.getElementById('current-monitor').innerHTML = 'RAM';
+      document.getElementById('current-monitor-use').innerHTML = `${memUsage}%`
 
       // Turn blinkstick red and start pulsing if RAM is critical 
       if (data.active >= memCrit) {
@@ -119,8 +114,8 @@ function monitorCPU() {
   si.currentLoad()
     .then(data => {
       const cpuUsage = Math.round(data.currentload * 100) / 100;
-      document.getElementById('current-monitor').innerHTML = 'Monitoring: CPU';
-      document.getElementById('current-monitor-use').innerHTML = `Usage: ${cpuUsage}%`;
+      document.getElementById('current-monitor').innerHTML = 'CPU';
+      document.getElementById('current-monitor-use').innerHTML = `${cpuUsage}%`;
 
       if (data.currentload >= cpuCrit) {
         console.log('Critical cpu usage!');
