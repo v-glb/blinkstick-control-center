@@ -18,13 +18,14 @@ const createWindow = () => {
     width: 350,
     height: 950,
     frame: false,
-    // resizable: false,
+    resizable: false,
     show: false,
     webPreferences: {
       nodeIntegration: true
     }
   });
 
+  mainWindow.setVisibleOnAllWorkspaces(true);
 
   // Hide the window when it loses focus
   mainWindow.on('blur', () => {
@@ -47,7 +48,12 @@ const createWindow = () => {
     mainWindow = null;
   });
 
-  // Init system tray
+
+  // #######################################################################
+  //                    TRAY INITIALIZATION 
+  // #######################################################################
+
+
   tray = new Tray(path.join(__dirname, 'assets/icon.png'));
 
   const contextMenu = Menu.buildFromTemplate([
@@ -99,8 +105,7 @@ function toggleWindow(window) {
 }
 
 function showWindow(window) {
-  // Position the app window cleanly below tray icon
-
+  // TODO: Cleanly positioning below tray icon instead of fixed pos ...
   const positioner = new Positioner(window);
   positioner.move('rightCenter');
   window.show();
