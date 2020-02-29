@@ -1,5 +1,6 @@
 const { app, BrowserWindow, Tray, nativeImage, Menu, ipcMain, screen } = require('electron');
 const path = require('path');
+const positioner = require('electron-traywindow-positioner');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -51,8 +52,9 @@ const createWindow = () => {
 
   const contextMenu = Menu.buildFromTemplate([
     { label: 'Control Center', click: () => toggleWindow(mainWindow) },
-    { label: 'Monitor CPU', type: 'radio', enabled: true, click: () => mainWindow.webContents.send('monitor:cpu') },
-    { label: 'Monitor RAM', type: 'radio', enabled: true, click: () => mainWindow.webContents.send('monitor:ram') },
+    { label: 'Monitor: CPU', type: 'radio', enabled: true, click: () => mainWindow.webContents.send('monitor:cpu') },
+    { label: 'Monitor: RAM', type: 'radio', enabled: true, click: () => mainWindow.webContents.send('monitor:ram') },
+    { label: 'Monitor: Pause', type: 'radio', enabled: true, click: () => mainWindow.webContents.send('monitor:pause') },
     { label: 'Quit', click: () => app.quit() }
   ]);
 
@@ -97,19 +99,9 @@ function toggleWindow(window) {
 }
 
 function showWindow(window) {
-  // TODO: Position app window near to tray icon
-  // const position = getWindowPosition(window);
-  // window.setPosition(position.x, position.y, false);
+  const alignment = {x: 'center', y: 'center'};
+  // Position the app window cleanly below tray icon
+  positioner.position(window, tray.getBounds(), alignment);
   window.show();
 }
 
-function getWindowPosition(window) {
-  // TODO: Position app window near to tray icon
-  //   let winBounds = window.getBounds();
-  //   let trayBounds = tray.getBounds();
-  //   // There may be more than one screen, so we need to figure out on which screen our tray icon lives.
-  //   const trayScreen = screen.getDisplayNearestPoint({
-  //     x: trayBounds.x,
-  //     y: trayBounds.y
-  //   });
-}

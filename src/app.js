@@ -44,22 +44,6 @@ window.addEventListener('DOMContentLoaded', event => {
   monitorCPU();
 });
 
-
-// Enabled / Disable monitoring
-document.getElementById('toggle-monitor').addEventListener('click', event => {
-  const monStatus = document.getElementById('current-monitor').innerHTML;
-
-  if (monStatus.includes('CPU') || monStatus.includes('RAM')) {
-    stopMonitoring();
-    document.getElementById('current-monitor').innerHTML = 'Monitoring: Disabled!';
-    // TODO: Send ipc to main process to grey out menu items for cpu and ram monitoring
-    // ipcRenderer.send
-  } else {
-    document.getElementById('current-monitor').innerHTML = 'Please choose monitor from menu';
-  }
-
-});
-
 /* 
         GLORIOUS COLOR WHEEL
 */
@@ -68,9 +52,6 @@ aColorPicker.from('.picker')
     document.body.style.backgroundColor = color;
     currentColor = aColorPicker.parseColor(color, 'hex')
     led.setColor(currentColor);
-
-    // Stop monitoring if user picks custom color
-    clearTimeout(currentMonitor);
   });
 
 // Close app on click of 'x'
@@ -185,4 +166,13 @@ ipcRenderer.on('monitor:cpu', e => {
 
   console.log('Keeping an eye on cpu usage.');
   monitorCPU();
+});
+
+ipcRenderer.on('monitor:pause', e => {
+  // Clear previous monitor
+  clearTimeout(currentMonitor);
+
+  console.log('Disabling all monitoring.');
+  document.getElementById('current-monitor').innerHTML = 'Monitoring currently paused!';
+      document.getElementById('current-monitor-use').innerHTML = '';
 });
