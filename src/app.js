@@ -49,7 +49,6 @@ window.addEventListener('DOMContentLoaded', event => {
 */
 aColorPicker.from('.picker')
   .on('change', (picker, color) => {
-    document.body.style.backgroundColor = color;
     currentColor = aColorPicker.parseColor(color, 'hex')
     led.setColor(currentColor);
   });

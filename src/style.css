@@ -20,3 +20,8 @@ body::-webkit-scrollbar {
 .icon-block .material-icons {
   font-size: inherit;
 }
+
+/* Color matching my system theme Arc */
+nav {
+  background-color: #2D333D
+}
