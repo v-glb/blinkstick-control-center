@@ -6,9 +6,17 @@
  * Made By MaterializeCSS.com
  */
 
+
+/* Hide scrollbar but keep functionality */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
 .icon-block {
   padding: 0 15px;
 }
+
 .icon-block .material-icons {
-	font-size: inherit;
+  font-size: inherit;
 }
