@@ -23,5 +23,11 @@ body::-webkit-scrollbar {
 
 /* Color matching my system theme Arc */
 nav {
-  background-color: #2D333D
+  background-color: #2D333D;
+}
+
+.modal {
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
 }

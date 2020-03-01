@@ -7,6 +7,12 @@ const { ipcRenderer } = electron;
 
 // TODO: Define DOM elements as object / variables
 
+window.addEventListener('DOMContentLoaded', (e) => {
+  // Initialize modal trigger
+  const elems = document.querySelectorAll('.modal');
+  const instances = M.Modal.init(elems);
+});
+
 // Save state of currentColor with aColorPicker
 let currentColor;
 // Save state wether CPU or RAM usage is being monitored
@@ -168,5 +174,5 @@ ipcRenderer.on('monitor:pause', e => {
 
   console.log('Disabling all monitoring.');
   document.getElementById('current-monitor').innerHTML = 'Monitoring currently paused!';
-      document.getElementById('current-monitor-use').innerHTML = '';
+  document.getElementById('current-monitor-use').innerHTML = '';
 });
