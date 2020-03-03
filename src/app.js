@@ -5,7 +5,14 @@ const si = require('systeminformation');
 const electron = require('electron');
 const { ipcRenderer } = electron;
 
-// TODO: Define DOM elements as object / variables
+// IDs and classes from index.html for easier references
+const DOMelements = {
+  navDeviceTitle: document.getElementById('nav-device-title'),
+  deviceSerial: document.getElementById('device-serial-h'),
+  closeBtn: document.getElementById('close-btn'),
+  currentMonitor: document.getElementById('current-monitor'),
+  currentMonitorUse: document.getElementById('current-monitor-use')
+}
 
 window.addEventListener('DOMContentLoaded', (e) => {
   // Initialize modal trigger
@@ -22,17 +29,17 @@ let currentMonitor;
 const led = blinkstick.findFirst();
 
 if (!led) {
-  console.log('Please check USB!');
-  document.getElementById('nav-device-title').innerHTML = 'No LED!';
+  console.log('Please check USB!'); // Debug, remove later
+  DOMelements.navDeviceTitle.innerHTML = 'No LED!';
 
 } else {
   // Get led information
   led.getDescription((err, data) => {
-    document.getElementById('nav-device-title').innerHTML += data;
+    DOMelements.navDeviceTitle.innerHTML += data;
   });
 
   led.getSerial((err, data) => {
-    document.getElementById('device-serial-h').innerHTML += data;
+    DOMelements.deviceSerial.innerHTML += data;
   });
 }
 
@@ -55,7 +62,7 @@ aColorPicker.from('.picker')
   });
 
 // Close app on click of 'x'
-document.getElementById('close-btn').addEventListener('click', () => {
+DOMelements.closeBtn.addEventListener('click', () => {
   ipcRenderer.send('app:close');
 });
 
@@ -79,12 +86,12 @@ function monitorMem() {
       memCrit = data.total * 0.8;
 
       const memUsage = Math.round((data.active / data.total) * 100 * 100) / 100;
-      document.getElementById('current-monitor').innerHTML = 'RAM';
-      document.getElementById('current-monitor-use').innerHTML = `${memUsage}%`
+      DOMelements.currentMonitor.innerHTML = 'RAM';
+      DOMelements.currentMonitorUse.innerHTML = `${memUsage}%`
 
       // Turn blinkstick red and start pulsing if RAM is critical 
       if (data.active >= memCrit) {
-        console.log('Critical mem usage!');
+        console.log('Critical mem usage!'); // Debug, remove later
         led.pulse('red', () => {
           led.morph('red')
         });
@@ -120,11 +127,11 @@ function monitorCPU() {
   si.currentLoad()
     .then(data => {
       const cpuUsage = Math.round(data.currentload * 100) / 100;
-      document.getElementById('current-monitor').innerHTML = 'CPU';
-      document.getElementById('current-monitor-use').innerHTML = `${cpuUsage}%`;
+      DOMelements.currentMonitor.innerHTML = 'CPU';
+      DOMelements.currentMonitorUse.innerHTML = `${cpuUsage}%`;
 
       if (data.currentload >= cpuCrit) {
-        console.log('Critical cpu usage!');
+        console.log('Critical cpu usage!'); //Debug remove later
         led.pulse('red', () => {
           led.morph('red')
         });
@@ -147,6 +154,12 @@ function monitorCPU() {
 // Clear monitoring loops
 function stopMonitoring() {
   clearTimeout(currentMonitor);
+
+  console.log('Disabling all monitoring.'); // Debug, remove later
+  DOMelements.currentMonitor.innerHTML = 'Monitoring currently paused!';
+  DOMelements.currentMonitorUse.innerHTML = '';
+
+  led.morph('gray');
 }
 
 /* 
@@ -156,7 +169,7 @@ ipcRenderer.on('monitor:ram', e => {
   // Clear previous monitor
   clearTimeout(currentMonitor);
 
-  console.log('Keeping an eye on memory usage.');
+  console.log('Keeping an eye on memory usage.'); // Debug, remove later
   monitorMem();
 });
 
@@ -164,15 +177,10 @@ ipcRenderer.on('monitor:cpu', e => {
   // Clear previous monitor
   clearTimeout(currentMonitor);
 
-  console.log('Keeping an eye on cpu usage.');
+  console.log('Keeping an eye on cpu usage.'); // Debug, remove later
   monitorCPU();
 });
 
 ipcRenderer.on('monitor:pause', e => {
-  // Clear previous monitor
-  clearTimeout(currentMonitor);
-
-  console.log('Disabling all monitoring.');
-  document.getElementById('current-monitor').innerHTML = 'Monitoring currently paused!';
-  document.getElementById('current-monitor-use').innerHTML = '';
+  stopMonitoring();
 });
