@@ -11,19 +11,33 @@ const DOMelements = {
   deviceSerial: document.getElementById('device-serial-h'),
   closeBtn: document.getElementById('close-btn'),
   currentMonitor: document.getElementById('current-monitor'),
-  currentMonitorUse: document.getElementById('current-monitor-use')
+  currentMonitorUse: document.getElementById('current-monitor-use'),
+  currentMonitorPause: document.getElementById('current-monitor-pause'),
+  colorPicker: document.getElementById('color-picker'),
+  colorPickerSwitch: document.getElementById('color-picker-switch'),
+  colorPickerSwitchStatus: document.getElementById('color-picker-switch-status')
 }
 
-window.addEventListener('DOMContentLoaded', (e) => {
+/* 
+        EVENT LISTENERS
+*/
+
+window.addEventListener('DOMContentLoaded', e => {
   // Initialize modal trigger
   const elems = document.querySelectorAll('.modal');
   const instances = M.Modal.init(elems);
+});
+
+DOMelements.colorPickerSwitchStatus.addEventListener('change', e => {
+  DOMelements.colorPicker.classList.toggle('hidden');
 });
 
 // Save state of currentColor with aColorPicker
 let currentColor;
 // Save state wether CPU or RAM usage is being monitored
 let currentMonitor;
+// switch for showing/hiding color picker
+let colorSwitchStatus;
 
 // Find first connected led via USB
 const led = blinkstick.findFirst();
@@ -154,12 +168,17 @@ function monitorCPU() {
 // Clear monitoring loops
 function stopMonitoring() {
   clearTimeout(currentMonitor);
+  clearStatusTable();
 
   console.log('Disabling all monitoring.'); // Debug, remove later
-  DOMelements.currentMonitor.innerHTML = 'Monitoring currently paused!';
-  DOMelements.currentMonitorUse.innerHTML = '';
+  DOMelements.currentMonitorPause.innerHTML = 'Monitoring currently paused!';
 
   led.morph('gray');
+}
+
+function clearStatusTable() {
+  DOMelements.currentMonitor.innerHTML = '';
+  DOMelements.currentMonitorUse.innerHTML = '';
 }
 
 /* 

@@ -58,6 +58,10 @@
           </tbody>
         </table>
 
+        <h5 class="header col s12 light" id="current-monitor-pause">
+          <!-- Display info when monitoring is paused via tray menu -->
+        </h5>
+
       </div>
     </div>
   </div>
@@ -70,7 +74,22 @@
       <!--   Icon Section   -->
       <div class="row center">
 
-        <div class="col s12 picker" acp-color="#EFE9E7" acp-show-hsl="no" acp-palette="PALETTE_MATERIAL_CHROME">
+        <!-- Custom Color Picker toggle -->
+        <h5 class="header col s12 light">
+          Set Custom Color
+        </h5>
+
+        <div class="switch" id="color-picker-switch">
+          <label>
+            Off
+            <input type="checkbox" id="color-picker-switch-status">
+            <span class="lever"></span>
+            On
+          </label>
+        </div>
+
+        <div class="col s12 picker hidden" id="color-picker" acp-color="#EFE9E7" acp-show-hsl="no"
+          acp-palette="PALETTE_MATERIAL_CHROME">
           <div class="row center">
 
           </div>
@@ -95,7 +114,7 @@
   </div>
 
 
-  <footer class="page-footer grey">
+  <footer class="page-footer">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
