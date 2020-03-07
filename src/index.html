@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <!-- <link href="dark_style.css" type="text/css" rel="stylesheet" media="screen,projection" /> -->
+
 </head>
 
 <!-- Nav bar -->
@@ -106,10 +108,15 @@
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Settings</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+
+      <div class="switch" id="dark-mode-switch">
+        <label>
+          Light
+          <input type="checkbox" id="dark-mode-switch-status">
+          <span class="lever"></span>
+          Dark
+        </label>
+      </div>
     </div>
   </div>
 

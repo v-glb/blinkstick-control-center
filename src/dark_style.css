@@ -1,0 +1,46 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+
+/* Hide scrollbar but keep functionality */
+html {
+  background-color: #3F4551;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+/* Color matching my system theme Arc */
+nav {
+  background-color: #2D333D;
+}
+
+.modal {
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  background-color: #3F4551;
+}
+
+.page-footer {
+  background-color: #2D333D;
+}
+
+.hidden {
+  display: none;
+}
