@@ -3,7 +3,7 @@ const aColorPicker = require('a-color-picker');
 const blinkstick = require('blinkstick');
 const si = require('systeminformation');
 const electron = require('electron');
-const { ipcRenderer } = electron;
+const { ipcRenderer, shell } = electron;
 
 // IDs and classes from index.html for easier references
 const DOMelements = {
@@ -15,7 +15,9 @@ const DOMelements = {
   blinkstickStatus: document.getElementById('blinkstick-status'),
   currentMonitorPause: document.getElementById('current-monitor-pause'),
   colorPicker: document.getElementById('color-picker'),
-  darkModeSwitchStatus: document.getElementById('dark-mode-switch-status')
+  darkModeSwitchStatus: document.getElementById('dark-mode-switch-status'),
+  electronLink: document.getElementById('electron-link'),
+  vglbLink: document.getElementById('v-glb-link')
 }
 
 // Save state of currentColor with aColorPicker
@@ -44,6 +46,14 @@ if (!led) {
 /* 
         EVENT LISTENERS START
 */
+
+DOMelements.electronLink.addEventListener('click', () => {
+  shell.openExternal('https://electronjs.org');
+});
+
+DOMelements.vglbLink.addEventListener('click', () => {
+  shell.openExternal('https://github.com/v-glb');
+});
 
 // Close app on click of 'x'
 DOMelements.closeBtn.addEventListener('click', () => {
