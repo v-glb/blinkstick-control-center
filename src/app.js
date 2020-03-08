@@ -27,11 +27,22 @@ const DOMelements = {
 DOMelements.darkModeSwitchStatus.addEventListener('change', v => {
   document.querySelector('body').classList.toggle('dark-theme-bg');
   document.querySelector('.modal').classList.toggle('dark-theme-bg');
+  document.querySelector('.modal-footer').classList.toggle('dark-theme-bg');
+  document.querySelector('.modal-footer').classList.toggle('dark-theme-font');
 
   const h5List = document.querySelectorAll('h5');
   h5List.forEach((el) => {
     el.classList.toggle('dark-theme-font');
+  });
 
+  const h4List = document.querySelectorAll('h4');
+  h4List.forEach((el) => {
+    el.classList.toggle('dark-theme-font');
+  });
+
+  const settingsTextList = document.querySelectorAll('.text-settings');
+  settingsTextList.forEach((el) => {
+    el.classList.toggle('dark-theme-font');
   });
 
   const thList = document.querySelectorAll('th');

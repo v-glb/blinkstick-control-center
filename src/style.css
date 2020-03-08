@@ -32,8 +32,8 @@ nav {
   height: 100%;
 }
 
-.page-footer {
-  background-color: #2D333D;
+.modal-footer {
+  text-align: center !important;
 }
 
 .hidden {
@@ -41,9 +41,13 @@ nav {
 }
 
 .dark-theme-bg {
-  background-color: #3F4551;
+  background-color: #3F4551 !important;
 }
 
 .dark-theme-font {
-  color: white;
+  color: white !important;
+}
+
+.row-settings {
+  margin-top: 20px;
 }

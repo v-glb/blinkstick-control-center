@@ -27,7 +27,8 @@
 
 <!-- Main body -->
 
-<body> <!-- dark-theme-bg -->
+<body>
+  <!-- dark-theme-bg -->
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <div class="row center">
@@ -68,7 +69,8 @@
     </div>
   </div>
 
-  <hr>
+
+  <div class="divider"></div>
 
   <div class="container">
     <div class="section">
@@ -105,39 +107,63 @@
   </div>
 
   <!-- Modal Structure -->
-  <div id="modal1" class="modal"> <!-- dark-theme-bg -->
+  <div id="modal1" class="modal">
+
+    <ul class="right">
+      <li><button class="modal-close btn-flat"><i class="material-icons">close</i></button></li>
+    </ul>
+
+
+    <!-- dark-theme-bg -->
     <div class="modal-content">
-      <h5>Settings</h5>
+      <h4>Settings</h5>
 
-      <div class="switch" id="dark-mode-switch">
-        <label>
-          Light
-          <input type="checkbox" id="dark-mode-switch-status">
-          <span class="lever"></span>
-          Dark
-        </label>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h5>Design</h5>
+          <div class="row row-settings">
+            <div class="col s6 text-settings">Dark Mode</div>
+            <div class="col s6">
+              <div class="switch" id="dark-mode-switch">
+                <label>
+                  <input type="checkbox" id="dark-mode-switch-status">
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h5>Section 2</h5>
+          <p>Stuff</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <h5>Section 3</h5>
+          <p>Stuff</p>
+        </div>
+
+    </div>
+
+
+    <div class="modal-footer">
+
+      <div class="footer-copyright">
+        <div class="container">
+          © 2020 vglb
+        </div>
       </div>
     </div>
+
   </div>
-
-
-  <footer class="page-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-        </div>
-        <div class="col l3 s12">
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-        Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div>
-    </div>
-  </footer>
-
+  </div>
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
