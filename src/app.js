@@ -15,12 +15,31 @@ const DOMelements = {
   currentMonitorPause: document.getElementById('current-monitor-pause'),
   colorPicker: document.getElementById('color-picker'),
   colorPickerSwitch: document.getElementById('color-picker-switch'),
-  colorPickerSwitchStatus: document.getElementById('color-picker-switch-status')
+  colorPickerSwitchStatus: document.getElementById('color-picker-switch-status'),
+  darkModeSwitchStatus: document.getElementById('dark-mode-switch-status')
 }
 
 /* 
         EVENT LISTENERS
 */
+
+// Apply dark-theme css
+DOMelements.darkModeSwitchStatus.addEventListener('change', v => {
+  document.querySelector('body').classList.toggle('dark-theme-bg');
+  document.querySelector('.modal').classList.toggle('dark-theme-bg');
+
+  const h5List = document.querySelectorAll('h5');
+  h5List.forEach((el) => {
+    el.classList.toggle('dark-theme-font');
+
+  });
+
+  const thList = document.querySelectorAll('th');
+  thList.forEach((el) => {
+    el.classList.toggle('dark-theme-font');
+  });
+});
+
 
 window.addEventListener('DOMContentLoaded', e => {
   // Initialize modal trigger

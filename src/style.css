@@ -39,3 +39,11 @@ nav {
 .hidden {
   display: none;
 }
+
+.dark-theme-bg {
+  background-color: #3F4551;
+}
+
+.dark-theme-font {
+  color: white;
+}
