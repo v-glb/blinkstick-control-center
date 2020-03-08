@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Tray, nativeImage, Menu, ipcMain, screen } = require('electron');
 const path = require('path');
-const Positioner = require('electron-positioner')
+const positioner = require('electron-traywindow-positioner');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -16,7 +16,7 @@ const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 350,
-    height: 950,
+    height: 650,
     frame: false,
     resizable: false,
     show: false,
@@ -105,8 +105,8 @@ function toggleWindow(window) {
 }
 
 function showWindow(window) {
-  // TODO: Cleanly positioning below tray icon instead of fixed pos ...
-  const positioner = new Positioner(window);
-  positioner.move('rightCenter');
+  // CAUTION: Modified module 'electron-traywindow-positioner' in order to get
+  // position to work properly with 3 monitor setup
+  positioner.position(window, tray.getBounds());
   window.show();
 }

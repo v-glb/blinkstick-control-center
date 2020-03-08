@@ -14,8 +14,6 @@ const DOMelements = {
   currentMonitorUse: document.getElementById('current-monitor-use'),
   currentMonitorPause: document.getElementById('current-monitor-pause'),
   colorPicker: document.getElementById('color-picker'),
-  colorPickerSwitch: document.getElementById('color-picker-switch'),
-  colorPickerSwitchStatus: document.getElementById('color-picker-switch-status'),
   darkModeSwitchStatus: document.getElementById('dark-mode-switch-status')
 }
 
@@ -56,10 +54,6 @@ window.addEventListener('DOMContentLoaded', e => {
   // Initialize modal trigger
   const elems = document.querySelectorAll('.modal');
   const instances = M.Modal.init(elems);
-});
-
-DOMelements.colorPickerSwitchStatus.addEventListener('change', e => {
-  DOMelements.colorPicker.classList.toggle('hidden');
 });
 
 // Save state of currentColor with aColorPicker
