@@ -20,7 +20,7 @@ const DOMelements = {
 
 // Save state of currentColor with aColorPicker
 let currentColor;
-// Save state wether CPU or RAM usage is being monitored
+// Save state wether CPU or RAM usage is being monitored (or paused)
 let currentMonitor;
 
 // Find first connected led via USB
@@ -92,6 +92,7 @@ aColorPicker.from('.picker')
 function darkModeToggler() {
   document.querySelector('body').classList.toggle('dark-theme-bg');
   document.querySelector('.modal').classList.toggle('dark-theme-bg');
+  document.querySelector('.btn-flat').classList.toggle('dark-theme-font');
   document.querySelector('.modal-footer').classList.toggle('dark-theme-bg');
   document.querySelector('.modal-footer').classList.toggle('dark-theme-font');
 
