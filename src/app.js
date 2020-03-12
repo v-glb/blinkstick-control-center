@@ -57,7 +57,7 @@ DOMelements.vglbLink.addEventListener('click', () => {
 
 // Close app on click of 'x'
 DOMelements.closeBtn.addEventListener('click', () => {
-  ipcRenderer.send('app:close');
+  ipcRenderer.send('app:hide');
 });
 
 // Apply dark-theme css
