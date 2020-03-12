@@ -1,6 +1,10 @@
 const { app, BrowserWindow, Tray, nativeImage, Menu, ipcMain, screen } = require('electron');
 const path = require('path');
 const positioner = require('electron-traywindow-positioner');
+const blinkstick = require('blinkstick');
+
+// Find first connected led via USB
+const led = blinkstick.findFirst();
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -21,7 +25,8 @@ const createWindow = () => {
     resizable: false,
     show: false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      devTools: true // Set true if needed!
     }
   });
 
@@ -95,8 +100,13 @@ app.on('activate', () => {
   }
 });
 
-ipcMain.on('app:close', (e) => {
-  app.quit();
+app.on('before-quit', () => {
+  // reset color to default gray when quitting the app
+  led.setColor('gray');
+});
+
+ipcMain.on('app:hide', e => {
+  mainWindow.hide();
 });
 
 // Functions for positioning the app properly near tray icon
