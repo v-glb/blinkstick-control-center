@@ -27,7 +27,8 @@ const createWindow = () => {
     webPreferences: {
       nodeIntegration: true,
       devTools: true // Set true if needed!
-    }
+    },
+    icon: path.join(__dirname, 'assets/icons/512x512.png')
   });
 
   mainWindow.setVisibleOnAllWorkspaces(true);

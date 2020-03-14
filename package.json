@@ -2,7 +2,7 @@
   "name": "blinkstick_control_center",
   "productName": "blinkstick_control_center",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Indicate CPU / RAM usage via BlinkStick",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -16,7 +16,7 @@
     "name": "v-glb",
     "email": "v.networks@posteo.de"
   },
-  "license": "MIT",
+  "license": "GPL-3.0",
   "config": {
     "forge": {
       "packagerConfig": {},
@@ -35,11 +35,13 @@
         },
         {
           "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
+          "config": {
+            "options": {
+              "maintainer": "v-glb",
+              "homepage": "https://v-glb.github.com",
+              "icon": "src/assets/icons/512x512.png"
+            }
+          }
         }
       ]
     }
