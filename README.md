@@ -2,7 +2,7 @@
 
 Turn your BlinkStick into a hardware monitor
 
-![blinkstick](assets/blinkstick.png)
+![blinkstick](src/assets/blinkstick.png)
 
 ## What?
 
@@ -16,7 +16,7 @@ This program turns your BlinkStick into a hardware monitor that will change it's
 - Warning (orange): >= 50%
 - Critical (red):   >= 80%
 
-![blinkstick-gif](assets/blinkstick-gif.gif)
+![blinkstick-gif](src/assets/blinkstick-gif.gif)
 
 ## How?
 
