@@ -103,7 +103,7 @@ app.on('activate', () => {
 
 app.on('before-quit', () => {
   // reset color to default gray when quitting the app
-  led.setColor('gray');
+  led.setColor('black');
 });
 
 ipcMain.on('app:hide', e => {
