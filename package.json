@@ -1,6 +1,6 @@
 {
   "name": "blinkstick_control_center",
-  "productName": "blinkstick_control_center",
+  "productName": "BlinkStick Monitor",
   "version": "1.0.0",
   "description": "Indicate CPU / RAM usage via BlinkStick",
   "main": "src/index.js",
@@ -20,7 +20,8 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "icon": "src/assets/icons/512x512.png"
+        "icon": "src/assets/icons/512x512.png",
+        "executableName": "blinkstick_control_center"
       },
       "makers": [
         {
@@ -54,7 +55,7 @@
     "electron-positioner": "^4.1.0",
     "electron-squirrel-startup": "^1.0.0",
     "electron-traywindow-positioner": "^1.1.0",
-    "systeminformation": "^4.21.0"
+    "systeminformation": "^4.23.1"
   },
   "devDependencies": {
     "@electron-forge/cli": "6.0.0-beta.47",
@@ -62,6 +63,6 @@
     "@electron-forge/maker-rpm": "6.0.0-beta.47",
     "@electron-forge/maker-squirrel": "6.0.0-beta.47",
     "@electron-forge/maker-zip": "6.0.0-beta.47",
-    "electron": "^7.1.11"
+    "electron": "^7.1.14"
   }
 }
